@@ -69,18 +69,38 @@ public class Books{
             //===========================================================================================
             //Edit/Update the existing information about an author
             
-        
+            String query5="Update authors set firstname='Ahmed' where authorid=1";
+            stmt.executeQuery(query5);
+            String subquery ="Select * from authors";
+            ResultSet rs2= stmt.executeQuery(subquery);
+            while(rs2.next()){
+            int authorId= rs2.getInt(1);
+                String firstname= rs2.getString(2);
+                String lastname= rs2.getString(3);
+                System.out.println("AuthorId:" + authorId + " " + "FirstName:"+ firstname+ " "+ "LastName: "+lastname);
+            }
+            System.out.println("==========================================================================================");
+           //==================================================================================================
+            //Add a new title for an author            
+            String query6= "Insert into titles(isbn, title, editionNumber, price) values ('1313123', 'Murder on the orient Express', 1234, 190)";            
+            stmt.executeQuery(query6);
             
+            //================================================================================================
+            // Add new publisher
+            String query7= "Insert into publishers(publisherId, publishername) values( 24,'Pulkit')";
+            stmt.executeQuery(query7);
             
-            //==================================================================================================
-            //Add a new title for an author
-            String query6= "";            
+            //===========================================================================================
+            //Edit/Update the existing information about a publisher
+            String query8= "Update publishers set publishername ='Database' where publisherid=2";
+            stmt.executeQuery(query8);
             
-          
+          stmt.close();
             
     }catch (SQLException ex) {
             ex.printStackTrace();
         }catch(Exception e){
         }
+        conn.close();
 }
 }

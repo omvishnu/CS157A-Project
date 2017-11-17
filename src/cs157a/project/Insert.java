@@ -30,7 +30,7 @@ public class Insert {
             try {
                 for (int i = 1; i < 19; i++) {
                     // Inserting values in relation Authors=
-                    String authors = "INSERT INTO AUTHORS(authorID, firstname, lastname) values("+i+", '" + firstName + "', '" + lastName + "' )";
+                    String authors = "INSERT INTO AUTHORS(authorID, firstname, lastname) values("+i+", '" + firstName[i] + "', '" + lastName[i] + "' )";
                     // Inserting values in relation Titles
                     String title = "INSERT INTO TITLES(ISBN, TITLE, EDITIONNUMBER, YEAR, PUBLISHERID, PRICE) VALUES ('ISBN" + i + " ' ,' " + titles[i] + " ' , " + (100 + i) + " , " + (1997 + i) + " , " + i + " , " + (10 + i) + ") ";
                     String publisher = "INSERT INTO PUBLISHERS(publisherId, publisherName) Values("+i+", '" + publisherName[i] + "') ";
