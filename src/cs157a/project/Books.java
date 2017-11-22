@@ -81,19 +81,45 @@ public class Books{
             }
             System.out.println("==========================================================================================");
            //==================================================================================================
-            //Add a new title for an author            
+            //Add a new title for an author      
             String query6= "Insert into titles(isbn, title, editionNumber, price) values ('1313123', 'Murder on the orient Express', 1234, 190)";            
             stmt.executeQuery(query6);
+            String sub3= "Select * from titles";
+            ResultSet rs3= stmt.executeQuery(sub3);
+            while(rs3.next()){
+                String isbn,titles,year;
+                int edition, publisher, price;
+                isbn= rs3.getString(1);
+                titles= rs3.getString(2);
+                edition= rs3.getInt(3);
+                year= rs3.getString(4);
+                publisher= rs3.getInt(5);
+                price= rs3.getInt(6);
+                System.out.println("ISBN "+isbn+" "+ "TITLES: "+titles+" "+"Edition: "+edition+ " "+ "Year: "+ year+ " "+ "PublisherId: "+ publisher+ " "+ "Price: "+price);
+            }
             
             //================================================================================================
             // Add new publisher
             String query7= "Insert into publishers(publisherId, publishername) values( 24,'Pulkit')";
             stmt.executeQuery(query7);
-            
+            String sub4= "Select * from publishers";
+            ResultSet rs4= stmt.executeQuery(sub4);
+            while(rs4.next()){
+                int id= rs4.getInt(1);
+                String name= rs4.getString(2);
+                System.out.println("ID: "+ id + " " + "Name: "+ name);
+            }
             //===========================================================================================
             //Edit/Update the existing information about a publisher
             String query8= "Update publishers set publishername ='Database' where publisherid=2";
             stmt.executeQuery(query8);
+            String sub5="Select * from publishers";
+            ResultSet rs5= stmt.executeQuery(sub5);
+            while(rs5.next()){
+                int id= rs5.getInt(1);
+                String name= rs5.getString(2);
+                System.out.println("ID: "+ id + " " + "Name: "+ name);
+            }
             
           stmt.close();
             
